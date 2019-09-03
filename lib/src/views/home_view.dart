@@ -1,5 +1,7 @@
-import 'package:components/src/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:components/src/providers/menu_provider.dart';
+import 'package:components/src/Utils/icon_string_util.dart';
+import 'package:components/src/views/alert_view.dart';
 
 class HomeView extends StatelessWidget{
 
@@ -9,6 +11,7 @@ class HomeView extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Text('Components'),
+        backgroundColor: Colors.black,
       ),
       body: _list(),
     );
@@ -16,22 +19,45 @@ class HomeView extends StatelessWidget{
 
   Widget _list() {
 
-    print( menuProvider.options );
+    return FutureBuilder(
+      future: menuProvider.cargarData(),
+      initialData: [],
+      builder: ( context, AsyncSnapshot<List<dynamic>> snapshot){
 
-    return ListView(
-        children: _createItemList(),
-      );
+        return ListView(
+          children: _createItemList( snapshot.data, context ),
+        );
+      }
+    );
   }
 
-  List<Widget> _createItemList() {
+  List<Widget> _createItemList( List<dynamic> data, BuildContext context ) {
 
-    return [
-      ListTile(title: Text('Hola mundo')),
-      Divider(),
-      ListTile(title: Text('Hola mundo')),
-      Divider(),
-      ListTile(title: Text('Hola mundo')),
-      Divider(),
-    ];
+    final List<Widget> options = [];
+
+    data.forEach( (obj){
+
+      final widgetTemp = ListTile(
+        title: Text( obj['texto'] ),
+        leading: getIcon( obj['icon'] ),
+        trailing: Icon( 
+          Icons.keyboard_arrow_right,
+          color: Colors.black,
+         ),
+         onTap: (){
+           
+           final route = MaterialPageRoute(
+             builder: ( context ) => AlertView(),
+           );
+
+           Navigator.push(context, route);
+         },
+      );
+
+      options..add( widgetTemp )
+             ..add( Divider() );            
+    });
+    
+    return options;
   }
 }
