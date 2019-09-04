@@ -7,7 +7,7 @@ class CardView extends StatelessWidget{
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black87,
         title: Text('Cards'),
       ),
       body: ListView(

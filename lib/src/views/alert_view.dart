@@ -7,11 +7,11 @@ class AlertView extends StatelessWidget{
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black87,
         title: Text('Alert'),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black87,
         child: Icon( Icons.arrow_back_ios),
         onPressed: (){
           Navigator.pop(context);
@@ -20,7 +20,7 @@ class AlertView extends StatelessWidget{
       body: Center(
         child: RaisedButton(
           child: Text('Show Alert'),
-          color: Colors.black,
+          color: Colors.black87,
           textColor: Colors.white,
           shape: StadiumBorder(),
           onPressed: () => _showAlert( context ),
