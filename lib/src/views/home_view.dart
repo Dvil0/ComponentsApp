@@ -46,11 +46,14 @@ class HomeView extends StatelessWidget{
          ),
          onTap: (){
            
-           final route = MaterialPageRoute(
-             builder: ( context ) => AlertView(),
-           );
 
-           Navigator.push(context, route);
+           Navigator.pushNamed(context, obj['ruta']);
+          //  final route = MaterialPageRoute(
+          //    builder: ( context ) => AlertView(),
+          //  );
+
+          //  Navigator.push(context, route);
+
          },
       );
 
