@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:components/src/providers/menu_provider.dart';
 import 'package:components/src/Utils/icon_string_util.dart';
-import 'package:components/src/views/alert_view.dart';
 
 class HomeView extends StatelessWidget{
 
